@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public bool direction;
-    public float speed;
-    public byte carID;
+    [SerializeField]
+    private bool direction;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private byte carID;
 
-    public SpriteRenderer sr;
+    private SpriteRenderer sr;
 
     private double existTime;
     public void RandomInitial(bool direction, float speed, byte carID, Vector2 positon)
