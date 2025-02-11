@@ -20,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (Input.GetKey(KeyCode.LeftShift)||Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            moveSpeed = speed*2.5f;
+            moveSpeed = speed * 2.5f;
         }
         else
         {
@@ -33,6 +33,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputValue move)
     {
         moveInput = move.Get<Vector2>();
-        sr.flipX = moveInput.x < 0;
+        sr.flipX = moveInput.x < 0 ? true : (moveInput.x > 0? false : sr.flipX);
     }
 }
