@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 namespace GroqApiLibrary
 {
     public class GroqApiClient : IDisposable
     {
         private readonly HttpClient _httpClient;
-        private const string BaseUrl = "https://api.groq.com/openai/v1/chat/completions";
-
+        private const string BaseUrl = "https://proxy.zsgbp.site/api.groq.com/openai/v1/chat/completions";
         public GroqApiClient(string apiKey)
         {
             _httpClient = new HttpClient();
@@ -28,7 +28,13 @@ namespace GroqApiLibrary
             {
                 var content = new StringContent(request.ToString(), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(BaseUrl, content);
-                response.EnsureSuccessStatusCode();
+                Debug.Log($"Response: {response.StatusCode} - {await response.Content.ReadAsStringAsync()}");
+                // response.EnsureSuccessStatusCode();
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    Debug.Log("fail to chat with d 70b !");
+                    return JsonConvert.DeserializeObject<JObject>("null");
+                }
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<JObject>(jsonResponse);
             }
@@ -46,7 +52,7 @@ namespace GroqApiLibrary
 
             using var requestMessage = new HttpRequestMessage(HttpMethod.Post, BaseUrl) { Content = content };
             using var response = await _httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead);
-//            response.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
 
             using var stream = await response.Content.ReadAsStreamAsync();
             using var reader = new StreamReader(stream);
