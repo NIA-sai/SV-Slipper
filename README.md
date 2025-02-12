@@ -1,13 +1,6 @@
 ## Soft-Village Slipper~(这里搞错确略显尴尬~
-
-忽略
-Temp/
-
-Logs/
-
-UserSettings/
-
-Library/
+版本：2022.3.52f1c1
+忽略：Temp/,Logs/,UserSettings/,Library/
 
 -----
 
@@ -52,7 +45,7 @@ defect：
 
 ![PixPin_2025-02-13_02-20-03](./snips/PixPin_2025-02-13_02-20-03.gif)
 
-
+为什么我感觉这 LTS 的 Unity Bug 也挺多的 😭
 
 
 
