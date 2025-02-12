@@ -1,5 +1,6 @@
-## Soft-Village Slipper~(这里搞错确略显尴尬~
+## Soft-Village Slipper <sub>(这里搞错确略显尴尬</sub>
 版本：2022.3.52f1c1
+
 忽略：Temp/,Logs/,UserSettings/,Library/
 
 -----
@@ -7,14 +8,7 @@
 
 
 ### 2/11
-
-![PixPin_2025-02-11_04-16-39](./Assets/snip/PixPin_2025-02-11_04-16-39.gif)
-
-
-
-
-
-
+![PixPin_2025-02-11_04-16-39](./snips/PixPin_2025-02-11_04-16-39.gif)
 
 ?. 似乎在unity里并不是很好用，因为对象被销毁并不是null？
 
@@ -74,7 +68,7 @@ defect：
 
 
 
-
+-----
 ### 参考/使用开源项目：
 
 - https://github.com/AdaTomruk/GroqUnityLibrary
