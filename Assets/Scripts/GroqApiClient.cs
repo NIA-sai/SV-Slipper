@@ -22,7 +22,7 @@ namespace GroqApiLibrary
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
         }
 
-        public async Task<JObject?> CreateChatCompletionAsync(JObject request)
+        public async Task<JObject> CreateChatCompletionAsync(JObject request)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace GroqApiLibrary
             }
         }
 
-        public async IAsyncEnumerable<JObject?> CreateChatCompletionStreamAsync(JObject request)
+        public async IAsyncEnumerable<JObject> CreateChatCompletionStreamAsync(JObject request)
         {
             request["stream"] = true;
             var content = new StringContent(request.ToString(), Encoding.UTF8, "application/json");
@@ -57,7 +57,7 @@ namespace GroqApiLibrary
             using var stream = await response.Content.ReadAsStreamAsync();
             using var reader = new StreamReader(stream);
 
-            string? line;
+            string line;
             while ((line = await reader.ReadLineAsync()) != null)
             {
                 if (line.StartsWith("data: "))
